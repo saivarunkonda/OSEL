@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+    dev:
+        build: .
+        image: registry.gitlab.com/pagekeytech/pkos:latest
+        environment:
+            - DISPLAY
+        hostname: pkos_dev
+        volumes:
+            - .:/pkos
+        network_mode: 'host' # makes x11 windows work for `make run`
+        entrypoint: ['scripts/os.py', 'run']
